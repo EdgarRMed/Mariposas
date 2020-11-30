@@ -5,11 +5,13 @@ import { routing, appRoutingProviders} from './app.routing';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EditarComponent } from './components/editar/editar.component';
+import { AgregarComponent } from './components/agregar/agregar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EditarComponent
+    EditarComponent,
+    AgregarComponent
   ],
   imports: [
     BrowserModule,
