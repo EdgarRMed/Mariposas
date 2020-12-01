@@ -1,1 +1,54 @@
-<p>agregar works!</p>
+<div class="container">
+    <h2>{{title}}</h2>
+
+    <form #nuevoEjemplarForm = "ngForm" (ngSubmit)="onSubmit(nuevoEjemplarForm)">
+        <p>
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="ejemplar.nombre" required>
+            <span *ngIf = "nombre.touched && !nombre.valid">
+                Este campo es obligatorio
+            </span>
+        </p>
+        <p>
+            <label for="genero">Género</label>
+            <input type="text" name="genero" #genero="ngModel" [(ngModel)]="ejemplar.genero" required>
+            <span *ngIf = "genero.touched && !genero.valid">
+                Este campo es obligatorio
+            </span>
+        </p>
+        <p>
+            <label for="region">Región</label>
+            <input type="text" name="region" #region="ngModel" [(ngModel)]="ejemplar.region" required>
+            <span *ngIf = "region.touched && !region.valid">
+                Este campo es obligatorio
+            </span>
+        </p>
+        <p>
+            <label for="especie">Especie</label>
+            <input type="text" name="especie" #especie="ngModel" [(ngModel)]="ejemplar.especie" required>
+            <span *ngIf = "especie.touched && !especie.valid">
+                Este campo es obligatorio
+            </span>
+        </p>
+        <p>
+            <label for="familia">Familia</label>
+            <input type="text" name="familia" #familia="ngModel" [(ngModel)]="ejemplar.familia" required>
+            <span *ngIf = "familia.touched && !familia.valid">
+                Este campo es obligatorio
+            </span>
+        </p>
+        <p>
+            <label for="subespecie">Subespecie</label>
+            <input type="text" name="subespecie" #subespecie="ngModel" [(ngModel)]="ejemplar.subespecie" required>
+            <span *ngIf = "subespecie.touched && !subespecie.valid">
+                Este campo es obligatorio
+            </span>
+        </p>
+        <p>
+            <label for="fotografia">Fotografía</label>
+            <input type="file" name="fotografia" placeholder="Subir imagen">
+        </p>
+
+        <input type="submit" value="Enviar" [disabled]="! nuevoEjemplarForm.form.valid">
+    </form>
+</div>

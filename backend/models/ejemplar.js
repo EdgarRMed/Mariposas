@@ -8,10 +8,10 @@ var NuevoEjemplar = Schema({
     nombre: String,
     genero: String,
     region: String,
-    especie: Number,
+    especie: String,
     familia: String,
     subespecie: String,
     fotografia: String
 });
 
-module.exports = mongoose.model('NuevoEjemplar', NuevoEjemplar);
+module.exports = mongoose.model('Ejemplare', NuevoEjemplar);

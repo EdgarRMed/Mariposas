@@ -32,9 +32,19 @@ var controller = {
         nuevoEjemplar.subespecie = params.subespecie;
         nuevoEjemplar.fotografia = params.fotografia;
 
-        return res.status(200).send({
-            message: 'Ejemplar agregado'
+        nuevoEjemplar.save((err, nuevoEjemplarStored) =>{
+            if(err) return res.status(500).send({message: 'Error al guardar'});
+
+            if(!nuevoEjemplarStored) return res.send(404).send({message: 'No se ha podido guardar el ejemplar'});
+
+            return res.status(200).send({nuevoEjemplar: nuevoEjemplarStored});
         });
+
+        // return res.status(200).send({
+        //     nuevoEjemplar: nuevoEjemplar,
+        //     message: "Wokrs!"
+        // });
+
     }
 };
 

@@ -1,11 +1,11 @@
-export class NuevoEjempalr{
+export class NuevoEjemplar{
     constructor(
-        public _nombre: string,
-        public _genero: String,
-        public _region: String,
-        public _especie: Number,
-        public _familia: String,
-        public _subespecie: String,
-        public _fotografia: String
+        public nombre: string,
+        public genero: String,
+        public region: String,
+        public especie: String,
+        public familia: String,
+        public subespecie: String,
+        public fotografia: String
     ){}
 }
