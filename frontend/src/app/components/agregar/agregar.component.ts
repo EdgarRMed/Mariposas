@@ -12,12 +12,11 @@ export class AgregarComponent implements OnInit {
 
   public title: string;
   public ejemplar: NuevoEjemplar;
-  public status: boolean;
+  public status: string;
 
     constructor(private _projetService: ProjectService) { 
-      this.title = "Agregar nuevo ejempalr";
+      this.title = "Agregar nuevo ejemplar";
       this.ejemplar = new NuevoEjemplar('','','','','','','');
-
     }
 
     ngOnInit(): void {
@@ -26,10 +25,11 @@ export class AgregarComponent implements OnInit {
     onSubmit(form) {
       console.log(this.ejemplar);
       this._projetService.agregarEjemplar(this.ejemplar).subscribe(
-        response => {
-          console.log(response);
+        response => {   
+            this.status = "success";
         },
         error => {
+          this.status = "failed";
           console.log(<any>error);
         }
       );

@@ -1,6 +1,15 @@
 <div class="container">
     <h2>{{title}}</h2>
 
+    <div *ngIf="status == 'success'">
+        Se ha guardado correctamente
+        <button>Aceptar</button>
+    </div>
+
+    <div *ngIf="status == 'failed'">
+        Ha ocurrido un error!
+    </div>
+
     <form #nuevoEjemplarForm = "ngForm" (ngSubmit)="onSubmit(nuevoEjemplarForm)">
         <p>
             <label for="nombre">Nombre</label>
