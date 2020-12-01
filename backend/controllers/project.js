@@ -45,6 +45,33 @@ var controller = {
         //     message: "Wokrs!"
         // });
 
+    },
+
+    uploadImage: function(req, res){
+        var ejemparId = req.params.id;
+        var fileName = 'Imagen no subida...'
+
+        if(req.files){
+            var filePath = req.files.imagen.path;
+            var fileSplit = filePath.split('\\');
+            var fileName = fileSplit[1];
+
+            NuevoEjemplar.findByIdAndUpdate(ejemparId, {fotografia: fileName}, {new: true}, (err, ejemplarUpdated)=>{
+                if(err) return res.status(500).send({message: 'La imagen no se ha subido'});
+            
+                if(!ejemplarUpdated) return res.status(404).send({message: 'El elemento no existe'});
+
+                return res.status(200).send({
+                    nuevoEjemplar: ejemplarUpdated
+                });
+            });
+
+        
+        } else {
+            return res.status(200).send({
+                message: fileName
+            });
+        }
     }
 };
 
