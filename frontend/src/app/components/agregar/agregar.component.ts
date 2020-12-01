@@ -15,7 +15,7 @@ export class AgregarComponent implements OnInit {
   public status: boolean;
 
     constructor(private _projetService: ProjectService) { 
-      this.title = "Agregar nuevo ejempalr";
+      this.title = "Agregar nuevo ejemplar";
       this.ejemplar = new NuevoEjemplar('','','','','','','');
 
     }

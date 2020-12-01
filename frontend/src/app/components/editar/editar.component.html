@@ -13,11 +13,11 @@
     <a class="navbar-brand" href="#">
         
         <h1>
-      <img src="C:\Users\liath\OneDrive - Benemérita Universidad Autónoma de Puebla\4° Semestre\Ingeniería de software\MARIPOSAS PAGINA WEB\Mariposas\frontend\mariposa.png"width="50" height="50" class="d-inline-block align-top" alt="" loading="lazy">
+      <img src="../../../assets/imagen/mariposa.png"width="50" height="50" class="d-inline-block align-top" alt="" loading="lazy">
        
       ~  MARIPOSAS ~
     
-        <img src="C:\Users\liath\OneDrive - Benemérita Universidad Autónoma de Puebla\4° Semestre\Ingeniería de software\MARIPOSAS PAGINA WEB\Mariposas\frontend\mariposa.png"width="50" height="50" class="d-inline-block align-top" alt="" loading="lazy">
+        <img src="../../../assets/imagen/mariposa.png"width="50" height="50" class="d-inline-block align-top" alt="" loading="lazy">
     </h1>
     </a>
   </nav>
@@ -58,7 +58,7 @@
   
   <br>
   <div style="text-align: center">
-  <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Agregar Ejemplar</a>
+  <a [routerLink] = "['/agregar']" [routerLinkActive] = "['active']" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Agregar Ejemplar</a>
   </div>
 <div class= "container">
     <h1 class="text-primary" th:text="${titulo}"></h1>
@@ -70,7 +70,7 @@
                 <th>Región</th>
                 <th>Especie</th>
                 <th>Familia</th>
-                <th>Subespecie</th>
+                <th>Subfamilia</th>
                 <th>Fotografía</th>
                 <th>ELIMINAR</th>
             </tr>
