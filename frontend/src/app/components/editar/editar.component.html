@@ -1,1 +1,99 @@
-<p>editar works!</p>
+
+<html xmlns:th="http//wwww.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text = "${titulo}"> MARIPOSAS </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    
+</head>
+<body>
+    <!-- Image and text -->
+
+<nav class="navbar navbar-light " style = "background-color: #FFFF66;">
+    <a class="navbar-brand" href="#">
+        
+        <h1>
+      <img src="C:\Users\liath\OneDrive - Benemérita Universidad Autónoma de Puebla\4° Semestre\Ingeniería de software\MARIPOSAS PAGINA WEB\Mariposas\frontend\mariposa.png"width="50" height="50" class="d-inline-block align-top" alt="" loading="lazy">
+       
+      ~  MARIPOSAS ~
+    
+        <img src="C:\Users\liath\OneDrive - Benemérita Universidad Autónoma de Puebla\4° Semestre\Ingeniería de software\MARIPOSAS PAGINA WEB\Mariposas\frontend\mariposa.png"width="50" height="50" class="d-inline-block align-top" alt="" loading="lazy">
+    </h1>
+    </a>
+  </nav>
+
+  <nav class="navbar navbar-light" style="background-color: #FF9933;">
+    <a class="navbar-brand" href="#"> >Ejemplares de Mariposas</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Catálogo</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Contacto
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">E-mail</a>
+            <a class="dropdown-item" href="#">Teléfono</a>
+            <div class="dropdown-divider"></div>
+
+          </div>
+        </li>
+        
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+  
+  <br>
+  <div style="text-align: center">
+  <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Agregar Ejemplar</a>
+  </div>
+<div class= "container">
+    <h1 class="text-primary" th:text="${titulo}"></h1>
+    <table class = "table">
+        <thead class= "thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Género</th>
+                <th>Región</th>
+                <th>Especie</th>
+                <th>Familia</th>
+                <th>Subespecie</th>
+                <th>Fotografía</th>
+                <th>ELIMINAR</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="ejemplar: ${ejemplares}">
+                <td th:text="${ejemplar.Nombre}"></td>
+                <td th:text ="${ejemplar.Género}"></td>
+                <td th:text = "${ejemplar.Región}"></td>
+                <td th:text = "${ejemplar.Especie}"></td>
+                <td th:text = "${ejemplar.Familia}"></td>
+                <td th:text = "${ejemplar.Subespecie}"></td>
+                <td th:text = "${ejemplar.Fotografía}"></td>
+                <td th:text = "${ejemplar.createAt}"></td>
+               
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</body>
+</html>
