@@ -47,7 +47,7 @@
             </span>
         </p>
         <p>
-            <label for="subespecie">Subespecie</label>
+            <label for="subespecie">Subfamilia</label>
             <input type="text" name="subespecie" #subespecie="ngModel" [(ngModel)]="ejemplar.subespecie" required>
             <span *ngIf = "subespecie.touched && !subespecie.valid">
                 Este campo es obligatorio
