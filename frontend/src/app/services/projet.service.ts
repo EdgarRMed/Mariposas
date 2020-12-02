@@ -26,12 +26,12 @@ import { Global } from './global';
         // Aqui va getEjemplar ...
         getEjemplar(): Observable<any>{
           let headers = new HttpHeaders().set('Content-Type', 'application/json');
-          return this._http.get(this.url+'getEjemplar',{headers: headers});
+          return this._http.get(this.url+'ejemplares',{headers: headers});
         }
         // Aqui va eliminarEjemplar...
         eliminarEjemplar(id){
           let headers = new HttpHeaders().set('Content-Type', 'application/json');
-          return this._http.delete(this.url+'eliminarEjemplar'+id,{headers: headers});          
+          return this._http.delete(this.url+'ejemplar/'+id,{headers: headers});          
         }
 
     }
