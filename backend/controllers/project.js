@@ -40,13 +40,9 @@ var controller = {
             return res.status(200).send({nuevoEjemplar: nuevoEjemplarStored});
         });
 
-        // return res.status(200).send({
-        //     nuevoEjemplar: nuevoEjemplar,
-        //     message: "Wokrs!"
-        // });
-
     },
 
+    // Metodo del controlador para guardar las imagenes 
     uploadImage: function(req, res){
         var ejemparId = req.params.id;
         var fileName = 'Imagen no subida...'
@@ -72,7 +68,22 @@ var controller = {
                 message: fileName
             });
         }
-    }
+    },
+
+    // Aqui va getEjemplares()...
+
+    // Fin mgetEjemplares
+
+
+    // Aqui va eliminarEjemplar()...
+
+    // Fin eliminarEjemplar
+
+
+    // Aqui va getImageFile()...
+
+    // Fin getImageFile
+
 };
 
 module.exports = controller;
