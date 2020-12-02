@@ -1,6 +1,8 @@
 'use strict'
 
 var NuevoEjemplar = require('../models/ejemplar');
+var fs = require('fs');
+var path = require('path');
 
 var controller = {
 
@@ -32,6 +34,8 @@ var controller = {
         nuevoEjemplar.subespecie = params.subespecie;
         nuevoEjemplar.fotografia = params.fotografia;
 
+        // Implementando la funcinalidad para buscar si existe o no...
+        
         nuevoEjemplar.save((err, nuevoEjemplarStored) =>{
             if(err) return res.status(500).send({message: 'Error al guardar'});
 
@@ -71,17 +75,43 @@ var controller = {
     },
 
     // Aqui va getEjemplares()...
-
+    getEjemplares: function(req, res){
+        NuevoEjemplar.find({}).exec((err, ejemplares) =>{
+            if(err) return res.status(500).send({message: 'Error al devolver los datos.'});
+            if(!ejemplares) return res.status(404).send({message: 'No hay Ejemplares que mostrar'});
+            return res.status(200).send({ejemplares}) ;
+        });
+    },
     // Fin mgetEjemplares
 
 
-    // Aqui va eliminarEjemplar()...
-
+    // Aqui va eliminarEjemplar()..
+    eliminarEjemplar: function(req, res){
+        var ejemplarId = req.params.id;
+        NuevoEjemplar.findByIdAndRemove(ejemplarId, (err, ejemplarRemoved)=>{
+            if(err) return res.status(500).send({message: "No se ha podido borrar el Ejemplar"});
+            if(!ejemplarRemoved) return res.status(404).send({message: "No se puedes eliminar ese Ejemplar"});
+           // Probable cambio
+            return res.status(200).send({ejemplar: ejemplarRemoved});
+        });
+    },
     // Fin eliminarEjemplar
 
 
     // Aqui va getImageFile()...
-
+    getImageFile: function(req, res){
+        var file = req.params.file;
+        console.log(req.params);
+        var path_file = './uploads/'+file;
+        
+        fs.access(path_file, fs.constants.F_OK, (err) =>{
+            if(err){
+                return res.status(200).send({message: "No exite la imagen..."});
+            }else{
+                return res.sendFile(path.resolve(path_file));
+            }
+        });
+    }
     // Fin getImageFile
 
 };

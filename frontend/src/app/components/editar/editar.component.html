@@ -76,17 +76,31 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="ejemplar: ${ejemplares}">
-                <td th:text="${ejemplar.Nombre}"></td>
-                <td th:text ="${ejemplar.Género}"></td>
-                <td th:text = "${ejemplar.Región}"></td>
-                <td th:text = "${ejemplar.Especie}"></td>
-                <td th:text = "${ejemplar.Familia}"></td>
-                <td th:text = "${ejemplar.Subespecie}"></td>
-                <td th:text = "${ejemplar.Fotografía}"></td>
-                <td th:text = "${ejemplar.createAt}"></td>
-               
-
+            <tr *ngFor="let ejemplar of ejemplares">
+                <td>{{ejemplar.nombre}}</td>
+                <td>{{ejemplar.genero}}</td>
+                <td>{{ejemplar.region}}</td>
+                <td>{{ejemplar.especie}}</td>
+                <td>{{ejemplar.familia}}</td>
+                <td>{{ejemplar.subespecie}}</td>
+                <td>
+                  <img src="{{url+'getImage/'+ejemplar.fotografia}}" *ngIf="ejemplar.fotografia" width="100" height="70">
+                </td>
+                <td *ngIf="confirm==false">
+                  <button (click)="setConfirm(true,ejemplar.nombre)">
+                    Eliminar
+                  </button>
+                </td>
+                <td *ngIf="confirm==true && name == ejemplar.nombre">
+                  <p>
+                    ¿Desea eliminar este elemnto?
+                    <br>
+                    <button (click)="setConfirm(false)">Cancelar</button>
+                    <button (click)="eliminarEjemplar(ejemplar._id)">
+                      Eliminar
+                    </button>
+                  </p>
+                </td>       
             </tr>
         </tbody>
     </table>
