@@ -1,5 +1,6 @@
 export class NuevoEjemplar{
     constructor(
+        public id: string,
         public nombre: string,
         public genero: String,
         public region: String,

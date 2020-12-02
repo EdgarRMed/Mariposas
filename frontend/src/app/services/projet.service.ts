@@ -23,4 +23,8 @@ import { Global } from './global';
             return this._http.post(this.url+'agregarEjemplar', params, {headers: headers});
         }
 
+        // Aqui va getEjemplar ...
+
+        // Aqui va eliminarEjemplar...
+
     }
