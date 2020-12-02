@@ -31,5 +31,16 @@ export class EditarComponent implements OnInit {
   }
 
   // Aqui va eliminarEjemplar
-
+  eliminarEjemplar(id){
+    this._projectService.eliminarEjemplar(id).subscribe(
+      response =>{
+        if(response.project){
+          this._router.navigate(['/editar']);
+        }
+      },
+      error =>{
+        console.log(<any>error);
+      }
+    );
+  }
 }
