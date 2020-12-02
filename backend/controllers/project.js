@@ -32,6 +32,8 @@ var controller = {
         nuevoEjemplar.subespecie = params.subespecie;
         nuevoEjemplar.fotografia = params.fotografia;
 
+        // Implementando la funcinalidad para buscar si existe o no
+        
         nuevoEjemplar.save((err, nuevoEjemplarStored) =>{
             if(err) return res.status(500).send({message: 'Error al guardar'});
 
