@@ -13,23 +13,14 @@ export class AgregarComponent implements OnInit {
 
   public title: string;
   public ejemplar: NuevoEjemplar;
-<<<<<<< HEAD
-  public status: boolean;
-
-    constructor(private _projetService: ProjectService) { 
-      this.title = " ~ Agregar nuevo ejemplar ~";
-      this.ejemplar = new NuevoEjemplar('','','','','','','');
-
-=======
   public status: string;
   public filesToUpload: Array<File>;
-    constructor(
-      private _projetService: ProjectService, 
-      private _uploadService: UploadService
-      ) { 
-      this.title = "Agregar nuevo ejemplar";
+    constructor(private _projetService: ProjectService, private _uploadService: UploadService) { 
+      
+      this.title = " ~ Agregar nuevo ejemplar ~";
       this.ejemplar = new NuevoEjemplar('','','','','','','','');
->>>>>>> f5c3a909b69be34fb9ae0b6c27120f868873395e
+
+  
     }
 
     ngOnInit(): void {

@@ -18,7 +18,6 @@
   <br>
 <div class="container">
 
-<<<<<<< HEAD
     <div style="text-align: center">
     <br>
     
@@ -28,7 +27,6 @@
         </font>
     </h1>
    
-=======
     <div *ngIf="status == 'success'">
         Se ha guardado correctamente
         <button [routerLink] = "['/']" [routerLinkActive] = "['active']">Aceptar</button>
@@ -38,7 +36,6 @@
         Ha ocurrido un error!
     </div>
 
->>>>>>> f5c3a909b69be34fb9ae0b6c27120f868873395e
     <form #nuevoEjemplarForm = "ngForm" (ngSubmit)="onSubmit(nuevoEjemplarForm)">
         <br>
         <p>
@@ -84,13 +81,8 @@
             </span>
         </p>
         <p>
-<<<<<<< HEAD
             <label for="fotografia">Fotografía    : </label>
-            <input type="file" name="fotografia" placeholder="Subir imagen">
-=======
-            <label for="fotografia">Fotografía</label>
             <input type="file" name="fotografia" placeholder="Subir imagen" (change)="fileChangeEvent($event)">
->>>>>>> f5c3a909b69be34fb9ae0b6c27120f868873395e
         </p>
         <br>
         <input type="submit" value="Enviar" [disabled]="! nuevoEjemplarForm.form.valid">
