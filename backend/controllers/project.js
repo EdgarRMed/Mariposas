@@ -71,17 +71,41 @@ var controller = {
     },
 
     // Aqui va getEjemplares()...
-
+    getEjemplares: function(req, res){
+        NuevoEjemplar.fin({}).exec((err, getEjemplares) =>{
+            if(err) return res.status(500).send({message: 'Error al devolver los datos.'});
+            if(!getEjemplares) return res.status(404).send({message: 'No hay Ejemplares que mostrar'});
+            return res.status(200).send({getEjemplares}) ;
+        });
+    }
     // Fin mgetEjemplares
 
 
-    // Aqui va eliminarEjemplar()...
-
+    // Aqui va eliminarEjemplar()..
+    eliminarEjemplar: function(req, res){
+        var ejemplarId = req.params.id;
+        NuevoEjemplar.findByIdAndUpdate(ejemplarId, (err, ejemplarRemoved)=>{
+            if(err) return res.status(500).send({message: "No se ha podido borrar el Ejemplar"});
+            if(!ejemplarRemoved) return res.status(404).send({message: "No se puedes eliminar ese Ejemplar"});
+            return res.status(200).send({ejemplar: ejemplarRemoved});
+        });
+    }
     // Fin eliminarEjemplar
 
 
     // Aqui va getImageFile()...
-
+    getImageFile: function(req, res){
+        var file = req.params.image;
+        var path_file = '/uploads'+file;
+        
+        fs.exists(path_file, (exists) =>{
+            if(exists){
+                return res.sendFile(path.resolve(path_file));
+            }else{
+                return res.status(200).send({message: "No esxites la imagen..."});
+            }
+        });
+    }
     // Fin getImageFile
 
 };
