@@ -29,7 +29,7 @@ import { Global } from './global';
           return this._http.get(this.url+'getEjemplar',{headers: headers});
         }
         // Aqui va eliminarEjemplar...
-        eliminarEjemplar(){
+        eliminarEjemplar(id){
           let headers = new HttpHeaders().set('Content-Type', 'application/json');
           return this._http.delete(this.url+'eliminarEjemplar'+id,{headers: headers});          
         }
