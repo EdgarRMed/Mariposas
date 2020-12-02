@@ -24,7 +24,10 @@ import { Global } from './global';
         }
 
         // Aqui va getEjemplar ...
-
+        getEjemplar(): Observable<any>{
+          let headers = new HttpHeaders().set('Content-Type', 'application/json');
+          return this._http.get(this.url+'getEjemplar',{headers: headers});
+        }
         // Aqui va eliminarEjemplar...
 
     }
