@@ -85,7 +85,7 @@
             <input type="file" name="fotografia" placeholder="Subir imagen" (change)="fileChangeEvent($event)">
         </p>
         <br>
-        <input type="submit" value="Enviar" [disabled]="! nuevoEjemplarForm.form.valid">
+        <input *ngIf="imageSelected == true" type="submit" value="Enviar" [disabled]="! nuevoEjemplarForm.form.valid">
         
     </form>
     <br>

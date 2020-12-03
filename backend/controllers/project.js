@@ -35,15 +35,14 @@ var controller = {
         nuevoEjemplar.fotografia = params.fotografia;
 
         // Implementando la funcinalidad para buscar si existe o no...
+                nuevoEjemplar.save((err, nuevoEjemplarStored) =>{
+                    if(err) return res.status(500).send({message: 'Error al guardar'});
         
-        nuevoEjemplar.save((err, nuevoEjemplarStored) =>{
-            if(err) return res.status(500).send({message: 'Error al guardar'});
-
-            if(!nuevoEjemplarStored) return res.send(404).send({message: 'No se ha podido guardar el ejemplar'});
-
-            return res.status(200).send({nuevoEjemplar: nuevoEjemplarStored});
-        });
-
+                    if(!nuevoEjemplarStored) return res.send(404).send({message: 'No se ha podido guardar el ejemplar'});
+        
+                    return res.status(200).send({nuevoEjemplar: nuevoEjemplarStored});
+                });
+          
     },
 
     // Metodo del controlador para guardar las imagenes 
@@ -55,16 +54,26 @@ var controller = {
             var filePath = req.files.imagen.path;
             var fileSplit = filePath.split('\\');
             var fileName = fileSplit[1];
+            var extSplit = fileName.split('\.');
+            var fileExt = extSplit[1];
 
-            NuevoEjemplar.findByIdAndUpdate(ejemparId, {fotografia: fileName}, {new: true}, (err, ejemplarUpdated)=>{
-                if(err) return res.status(500).send({message: 'La imagen no se ha subido'});
-            
-                if(!ejemplarUpdated) return res.status(404).send({message: 'El elemento no existe'});
-
-                return res.status(200).send({
-                    nuevoEjemplar: ejemplarUpdated
+            if( fileExt =='jpg' || fileExt =='png' || fileExt =='jpeg'){
+                NuevoEjemplar.findByIdAndUpdate(ejemparId, {fotografia: fileName}, {new: true}, (err, ejemplarUpdated)=>{
+                    if(err) return res.status(500).send({message: 'La imagen no se ha subido'});
+                
+                    if(!ejemplarUpdated) return res.status(404).send({message: 'El elemento no existe'});
+    
+                    return res.status(200).send({
+                        nuevoEjemplar: ejemplarUpdated
+                    });
                 });
-            });
+            } else {
+                fs.unlink( filePath, (err)=>{
+                    return res.status(200).send({message: 'La extension no es valida'});
+                });
+            }
+
+            
 
         
         } else {
@@ -82,7 +91,7 @@ var controller = {
             return res.status(200).send({ejemplares}) ;
         });
     },
-    // Fin mgetEjemplares
+    // Fin getEjemplares
 
 
     // Aqui va eliminarEjemplar()..

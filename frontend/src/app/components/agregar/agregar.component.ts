@@ -15,11 +15,13 @@ export class AgregarComponent implements OnInit {
   public ejemplar: NuevoEjemplar;
   public status: string;
   public filesToUpload: Array<File>;
+  public imageSelected: boolean;
+
     constructor(private _projetService: ProjectService, private _uploadService: UploadService) { 
       
       this.title = " ~ Agregar nuevo ejemplar ~";
       this.ejemplar = new NuevoEjemplar('','','','','','','','');
-
+      this.imageSelected = false;
   
     }
 
@@ -51,6 +53,7 @@ export class AgregarComponent implements OnInit {
 
     fileChangeEvent(fileInput: any){
       this.filesToUpload = <Array <File>>fileInput.target.files; 
+      this.imageSelected = true;
     }
 
 }
